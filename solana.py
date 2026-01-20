@@ -34,12 +34,18 @@ def send_telegram_message(text):
 def main():
     print("Starte Solana-Price-Watcher (Binance)...")
     send_telegram_message("Solana-Watcher gestartet")
+    last_hour = -1
 
     while True:
         try:
             now = time.time()
             price = get_solana_price_usd()
             print(f"Aktueller SOL-Preis: {price:.2f} USD")
+
+            lt = time.localtime()
+            if lt.tm_min == 0 and lt.tm_hour != last_hour:
+                 send_telegram_message(f"Hourly Price: {price:.2f} USD")
+                 last_hour = lt.tm_hour
 
             price_history.append((now, price))
 
