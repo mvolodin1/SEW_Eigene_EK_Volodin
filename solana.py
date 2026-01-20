@@ -2,6 +2,11 @@ import time
 import requests
 from collections import deque
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 BINANCE_URL = "https://api.binance.com/api/v3/ticker/price"
 SYMBOL = "SOLUSDT"
 
@@ -9,8 +14,8 @@ CHECK_INTERVAL_SECONDS = 5
 WINDOW_SECONDS = 5 * 60     
 THRESHOLD_PERCENT = 2.0        
 
-TELEGRAM_TOKEN = "8402984439:AAFIm1az94sC1Ou5gz4dn9EuJ612nmfckpA"
-TELEGRAM_CHAT_ID = 1327081785
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
 price_history = deque()
 
