@@ -10,7 +10,7 @@ WINDOW_SECONDS = 5 * 60
 THRESHOLD_PERCENT = 2.0        
 
 TELEGRAM_TOKEN = "8402984439:AAFIm1az94sC1Ou5gz4dn9EuJ612nmfckpA"
-TELEGRAM_CHAT_ID = "1327081785"
+TELEGRAM_CHAT_ID = 1327081785
 
 price_history = deque()
 
@@ -28,7 +28,7 @@ def send_telegram_message(text):
 
 def main():
     print("Starte Solana-Price-Watcher (Binance)...")
-    
+    send_telegram_message("Solana-Watcher gestartet")
 
     while True:
         try:
